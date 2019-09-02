@@ -28,6 +28,7 @@ class Chat extends React.Component{
           messages={messages || data}
           appendNewMessage={this.appendNewMessage}
           friend={this.props.friend}
+          user={this.props.user}
         />
       </SafeAreaView>
      </View>

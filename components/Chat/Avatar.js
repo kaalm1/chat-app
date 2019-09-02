@@ -9,6 +9,7 @@ export default class Avatar extends React.Component{
   render(){
 
     let url = this.props.url !== global.NO_PICTURE_URL ? {uri: this.props.url} : this.props.match.gender === 'male' ? defaultImageMale : defaultImageFemale
+    if (this.props.thisUser){return null}
 
     return(
       !this.props.thisUser &&

@@ -16,6 +16,7 @@ const user = {
   name: 'Alicia',
   picture_url: 'https://images.unsplash.com/photo-1548382131-e0ebb1f0cdea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80'
 }
+
 const friend = {
   uuid: uuidv1(),
   name: 'Felicity',
