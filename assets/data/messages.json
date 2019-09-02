@@ -1,0 +1,52 @@
+{
+  "messages": [
+      {
+       "_id": "35524067-daf4-4442-b1b1-b101a3f68b36",
+        "created": "2018-12-25T17:54:24.818Z",
+        "text": "Thanks, that would be great!",
+        "user": {
+          "_id": "766d03c9-288d-45bb-bd7e-71e686ad8a18",
+        },
+      },
+       {
+        "_id": "35524067-daf4-4442-b1b1-b101a3f68b31",
+         "created": "2018-12-25T17:53:24.818Z",
+         "text": "Good choice 👍 For the next one, perhaps you can plan something outdoorsy since you both love nature. I can send you a list of nice parks in her neighborhood.",
+         "user": {
+           "_id": "a8ed60d8-2075-4d69-84cc-dd558cc5348d",
+         },
+       },
+       {
+        "_id": "35524067-daf4-4442-b1b1-b101a3f68b32",
+         "created": "2018-12-25T17:52:24.818Z",
+         "text": "To the Italian place you suggested. She really enjoyed it.",
+         "user": {
+           "_id": "766d03c9-288d-45bb-bd7e-71e686ad8a18",
+         },
+       },
+       {
+        "_id": "35524067-daf4-4442-b1b1-b101a3f68b33",
+         "created": "2018-12-25T17:51:24.818Z",
+         "text": "Sounds exciting. Where did you take her?",
+         "user": {
+           "_id": "a8ed60d8-2075-4d69-84cc-dd558cc5348d",
+         },
+       },
+       {
+        "_id": "35524067-daf4-4442-b1b1-b101a3f68b34",
+         "created": "2018-12-25T17:50:24.818Z",
+         "text": "It went pretty well, I think. She said yes to a second date.",
+         "user": {
+           "_id": "766d03c9-288d-45bb-bd7e-71e686ad8a18",
+         },
+       },
+       {
+        "_id": "35524067-daf4-4442-b1b1-b101a3f68b35",
+         "created": "2018-12-25T17:49:24.818Z",
+         "text": "So Joe, how was your first date with Sarah? 😉",
+         "user": {
+           "_id": "a8ed60d8-2075-4d69-84cc-dd558cc5348d",
+         },
+       },
+     ]
+}
