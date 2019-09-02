@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform } from 'react-native'
 import {scale, verticalScale, horizontalScale} from './scaling'
 import commonColor from './commonColor.style'
 
@@ -76,4 +76,4 @@ export default StyleSheet.create({
     fontSize: Math.max(12, horizontalScale(14)),
     fontWeight: '600',
   }
-});
+})

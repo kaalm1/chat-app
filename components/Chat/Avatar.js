@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, View} from 'react-native'
-import { isSameUser } from './utils';
+import { isSameUser } from './utils'
 import NoImage from './NoImage'
 
 

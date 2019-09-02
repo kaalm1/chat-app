@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {View} from 'react-native'
 import {Icon} from 'native-base'
 
 
 const NoImage = function(props) {
-  // const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0)
 
   // Similar to componentDidMount and componentDidUpdate:
   // useEffect(() => {
   //   // Update the document title using the browser API
-  //   // document.title = `You clicked ${count} times`;
-  // });
+  //   // document.title = `You clicked ${count} times`
+  // })
 
   return (
     <View
@@ -30,7 +30,7 @@ const NoImage = function(props) {
         type='AntDesign'
         style={{color: '#DDDEDF', fontSize: props.fontSize || 20}}/>
     </View>
-  );
+  )
 }
 
 export default NoImage

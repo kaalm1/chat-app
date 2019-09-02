@@ -1,6 +1,6 @@
-import React from 'react';
-import { Image, StyleSheet, View, ViewPropTypes } from 'react-native';
-import Lightbox from 'react-native-lightbox';
+import React from 'react'
+import { Image, StyleSheet, View, ViewPropTypes } from 'react-native'
+import Lightbox from 'react-native-lightbox'
 import Time from './Time'
 
 export default function MessageImage({
@@ -25,7 +25,7 @@ export default function MessageImage({
         />
       </Lightbox>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'contain',
   },
-});
+})

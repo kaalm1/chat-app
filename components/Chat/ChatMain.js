@@ -6,7 +6,7 @@ import React from 'react'
 import {FlatList, KeyboardAvoidingView, Platform, AsyncStorage, View} from 'react-native'
 import {Container, Content, Text} from 'native-base'
 import moment from 'moment'
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import KeyboardSpacer from 'react-native-keyboard-spacer'
 import _ from 'lodash'
 import MessageContainer from './MessageContainer'
 import Composer from './Composer'
@@ -20,7 +20,7 @@ class ChatMain extends React.Component{
     newInput: null,
   }
 
-  _keyExtractor = (item, index) => item._id;
+  _keyExtractor = (item, index) => item._id
 
   onTextChanged = (text) => {
     this.setState({newInput: text})
@@ -64,7 +64,7 @@ class ChatMain extends React.Component{
       <Container style={{flex: 1}}>
 
           <FlatList
-            ref={(ref) => { this.flatList = ref; }}
+            ref={(ref) => { this.flatList = ref }}
             data={this.props.messages}
             keyExtractor={this._keyExtractor}
             // extraData={this.props}
@@ -104,11 +104,11 @@ class ChatMain extends React.Component{
   }
 }
 
-// const renderItem = ({item, index}) => (<MessageContainer message={item} />);
+// const renderItem = ({item, index}) => (<MessageContainer message={item} />)
 
 const getItemLayout = (data, index) => (
   {length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index}
-);
+)
 
 
 export default ChatMain

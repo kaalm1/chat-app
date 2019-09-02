@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react'
+import {View} from 'react-native'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/index';
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import {AppLoading} from 'expo'
+import * as Font from 'expo-font'
+import rootReducer from './reducers/index'
 import Chat from './containers/Chat'
 const uuidv1 = require('uuid/v1')
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const user = {
   uuid: uuidv1(),
@@ -20,12 +23,34 @@ const friend = {
 }
 
 const App = (props) => {
+  const [isReady, setIsReady] = useState(false);
+
+    const _cacheResourcesAsync = async () => {
+      await Font.loadAsync({
+        Roboto: require('./assets/fonts/Roboto.ttf'),
+        Roboto_medium: require('./assets/fonts/Roboto-Medium.ttf'),
+        Cabin: require('./assets/fonts/Cabin-Regular.ttf'),
+        CabinBold: require('./assets/fonts/Cabin-Bold.ttf'),
+        CabinItalic: require('./assets/fonts/Cabin-Italic.ttf'),
+      });
+
+  }
+
   return (
-    <Chat
-      user={props.user || user}
-      friend={props.friend || friend}
-    />
-  );
+    !isReady ?
+      <AppLoading
+        startAsync={_cacheResourcesAsync}
+        onFinish={() => setIsReady(true)}
+        onError={console.warn}
+      />
+      :
+      <Provider store={store}>
+        <Chat
+          user={props.user || user}
+          friend={props.friend || friend}
+        />
+      </Provider>
+  )
 }
 
 export default App

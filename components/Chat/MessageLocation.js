@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import {
   Linking,
   Platform,
   StyleSheet,
   TouchableOpacity,
-} from 'react-native';
+} from 'react-native'
 import MapView from 'react-native-maps'
 
 export default class MessageLocation extends React.Component {
@@ -23,7 +23,7 @@ export default class MessageLocation extends React.Component {
             <MapView.Marker title={this.props.currentMessage.text} coordinate={{latitude: this.props.currentMessage.location.latitude,longitude: this.props.currentMessage.location.longitude}}/>
           </MapView>
         </TouchableOpacity>
-      );
+      )
   }
 }
 
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     margin: 3,
   },
-});
+})

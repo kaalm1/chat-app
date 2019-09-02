@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleSheet, Text, View, ViewPropTypes } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, ViewPropTypes } from 'react-native'
 
-import moment from 'moment';
+import moment from 'moment'
 
-import Color from './Color';
-import { TIME_FORMAT } from './Constant';
+import Color from './Color'
+import { TIME_FORMAT } from './Constant'
 
 import styles from '../../styles/chat.style'
 
@@ -21,6 +21,6 @@ export default class Time extends React.Component{
            .format('LT')}
        </Text>
      </View>
-   );
+   )
  }
 }

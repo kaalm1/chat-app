@@ -7,16 +7,16 @@ import MessageLocation from './MessageLocation'
 import Avatar from './Avatar'
 import Day from './Day'
 import Time from './Time'
-import { isSameUser, isSameDay } from './utils';
+import { isSameUser, isSameDay } from './utils'
 import commonColor from '../../styles/commonColor.style'
 import styles from '../../styles/chat.style'
 
 export default class MessageContainer extends React.PureComponent{
   render(){
-    const { message, messages, idx, } = this.props;
+    const { message, messages, idx, } = this.props
     let thisUser = message.userId === this.props.user
-    const previousMessage = messages[idx - 1] || {};
-    const nextMessage = messages[idx + 1] || {};
+    const previousMessage = messages[idx - 1] || {}
+    const nextMessage = messages[idx + 1] || {}
     let sameUser = isSameUser(message, previousMessage)
     let sameDay = isSameDay(message, previousMessage)
     return(

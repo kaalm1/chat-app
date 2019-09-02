@@ -1,10 +1,9 @@
 import {AsyncStorage} from 'react-native'
 import Config from '../config'
 import _ from 'lodash'
-import {submitUserInappropriateReport} from './users'
 var shuffle = require('shuffle-array')
-const Entities = require('html-entities').XmlEntities;
-const entities = new Entities();
+const Entities = require('html-entities').XmlEntities
+const entities = new Entities()
 const CHAT_URL = process.env.NODE_ENV === 'development' ? Config.CHAT_URL_DEV : Config.CHAT_URL
 
 export function checkGoodFirstMessage(message){
@@ -86,7 +85,7 @@ export function messageCoffee(position, onSend){
           latitude: data.coordinates.latitude,
           longitude: data.coordinates.longitude,
         },
-      });
+      })
       onSend({text: `@ ${data.location.display_address}`})
     })
     .catch(()=>{
@@ -98,12 +97,12 @@ export function messageCoffee(position, onSend){
 export function messageImage(uri, onSend){
   return async (dispatch) => {
     token = await AsyncStorage.getItem(Config.FIREBASE)
-    let formData = new FormData();
+    let formData = new FormData()
       formData.append('file', {
         uri,
         name: 'photo.png',
         type: 'image/png',
-      });
+      })
 
     const options = {
         method: 'POST',
@@ -122,7 +121,7 @@ export function messageImage(uri, onSend){
       } else {
         if (response.message === 'inappropriate'){
           token = await AsyncStorage.getItem(Config.JWT)
-          dispatch(submitUserInappropriateReport(token))
+          // dispatch(submitUserInappropriateReport(token))
         }
       }
     })

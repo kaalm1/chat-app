@@ -22,7 +22,7 @@ export default function chatReducer(state= {chats: {}, image: null, giphy: null,
     case 'LAST_MESSAGE_SENT':
       return Object.assign({}, state, {message: action.payload})
     default:
-      return state;
+      return state
 
   }
 }

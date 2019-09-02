@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Platform, StyleSheet, TextInput, View, TouchableOpacity} from 'react-native';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Platform, StyleSheet, TextInput, View, TouchableOpacity} from 'react-native'
 import {Input, Item, Icon} from 'native-base'
 import AdditionalActions from './AdditionalActions'
-import { MIN_COMPOSER_HEIGHT, DEFAULT_PLACEHOLDER, DEFAULT_ICE_BREAKER } from './Constant';
-import Color from './Color';
+import { MIN_COMPOSER_HEIGHT, DEFAULT_PLACEHOLDER, DEFAULT_ICE_BREAKER } from './Constant'
+import Color from './Color'
 import styles from '../../styles/chat.style'
 
 export default class Composer extends React.Component {
@@ -42,7 +42,7 @@ export default class Composer extends React.Component {
 
         </View>
       </View>
-    );
+    )
   }
 
 }
@@ -62,4 +62,4 @@ export default class Composer extends React.Component {
 //       android: 3,
 //     }),
 //   },
-// });
+// })

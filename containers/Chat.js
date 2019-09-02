@@ -2,7 +2,7 @@ import React from 'react'
 import {View, TouchableOpacity} from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation'
 import _ from 'lodash'
 import ChatMain from '../components/Chat/ChatMain'
 import Config from '../config'
@@ -38,13 +38,13 @@ class Chat extends React.Component{
 const mapStateToProps = (state) => {
   return {
     chats: state.chat.chats
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateChatWithNewMessage,
-  }, dispatch);
-};
+  }, dispatch)
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat)
