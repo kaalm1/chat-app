@@ -11,7 +11,6 @@ import * as Permissions from 'expo-permissions'
 import {messageImage, messageCoffee, messageGiphy, messageQuote, messageTrivia} from '../../actions/chats'
 
 import ActionSheet from 'react-native-actionsheet'
-import { connectActionSheet } from '@expo/react-native-action-sheet'
 
 const CANCEL_INDEX = 0
 const EMOJIFY_CHAT = 'Emojify Chat'
@@ -129,54 +128,19 @@ class AdditionalActions extends React.Component {
       }
     }
 
-    _onOpenActionSheet = () => {
-      // Same interface as https://facebook.github.io/react-native/docs/actionsheetios.html
-      const options = [ 'Cancel', 'Choose From Gallery', 'Coffee Date', 'Send Giphy', 'Inspire', 'Play Trivia']
-      // const destructiveButtonIndex = 0;
-      const cancelButtonIndex = 0;
-
-      this.props.showActionSheetWithOptions(
-        {
-          options,
-          cancelButtonIndex,
-          // destructiveButtonIndex,
-        },
-        buttonIndex => {
-          // Do something here depending on the button index selected
-          switch (buttonIndex) {
-            case 1:
-              this.onImagePick()
-              break
-            case 2:
-              this.onCoffeeDate()
-              break
-            case 3:
-              this.onSendGiphy()
-              break
-            case 4:
-              this.onSendQuote()
-            case 5:
-              this.onSendTrivia()
-            default:
-              break
-          }
-        },
-      );
-    };
-
   render(){
     return(
       <TouchableOpacity
         style={{alignSelf:'flex-end', paddingBottom:5}}
         onPress={this.showActionSheet}
       >
-        {/* <ActionSheet
+        <ActionSheet
           ref={o => this.ActionSheet = o}
           options={this.state.options}
           cancelButtonIndex={CANCEL_INDEX}
           onPress={this.handlePress}
-        /> */}
-        <Icon name='plus-circle' type='Feather' onPress={this._onOpenActionSheet}/>
+        />
+        <Icon name='plus-circle' type='Feather'/>
 
       </TouchableOpacity>
     )
@@ -193,6 +157,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-const ConnectedApp = connectActionSheet(AdditionalActions)
-
-export default connect(null, mapDispatchToProps)(ConnectedApp)
+export default connect(null, mapDispatchToProps)(AdditionalActions)

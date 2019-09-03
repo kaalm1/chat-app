@@ -5,11 +5,9 @@ import {bindActionCreators} from 'redux'
 import { SafeAreaView } from 'react-navigation'
 import _ from 'lodash'
 import ChatMain from '../components/Chat/ChatMain'
-import Config from '../config'
-import commonColor from '../styles/commonColor.style'
 import {saveSentMessage} from '../actions/chats'
 import Fire from '../Fire'
-import data from '../assets/data/messages.json'
+// import data from '../assets/data/messages.json'
 
 class Chat extends React.Component{
 

@@ -26,19 +26,19 @@ export default StyleSheet.create({
   textUser:{
     color: 'black',
     fontFamily: commonColor.fontPrimary,
-    fontSize: Math.max(14, horizontalScale(20)),
+    fontSize: Math.min(Math.max(14, horizontalScale(20)),26),
   },
   textMatch: {
     color: 'black',
     fontFamily: commonColor.fontPrimary,
-    fontSize: Math.max(14, horizontalScale(20)),
+    fontSize: Math.min(Math.max(14, horizontalScale(20)),26),
   },
   textInput: {
     flex: 1,
     marginLeft: 10,
     fontFamily: commonColor.fontPrimary,
-    fontSize: Math.max(14, horizontalScale(20)),
-    lineHeight: Math.max(16, horizontalScale(23)),
+    fontSize: Math.min(Math.max(14, horizontalScale(20)),26),
+    lineHeight: Math.min(Math.max(16, horizontalScale(23)),29),
     marginTop: Platform.select({
       ios: 6,
       android: 0,
@@ -53,14 +53,14 @@ export default StyleSheet.create({
   },
   timeUser: {
     color: '#939393',
-    fontSize: Math.max(10, horizontalScale(10)),
+    fontSize: Math.min(Math.max(10, horizontalScale(10)),16),
     textAlign: 'right',
     // fontFamily: commonColor.fontPrimary
   },
   timeMatch: {
     color: '#aaa',
     // color: 'black',
-    fontSize: Math.max(10, horizontalScale(10)),
+    fontSize: Math.min(Math.max(10, horizontalScale(10)),16),
     textAlign: 'left',
     // fontFamily: commonColor.fontPrimary
   },
@@ -73,7 +73,7 @@ export default StyleSheet.create({
   dayText: {
     backgroundColor: 'transparent',
     color: '#b2b2b2',
-    fontSize: Math.max(12, horizontalScale(14)),
+    fontSize: Math.min(Math.max(12, horizontalScale(14)),16),
     fontWeight: '600',
   }
 })

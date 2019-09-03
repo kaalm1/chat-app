@@ -15,12 +15,11 @@ export default class Composer extends React.Component {
       <View style={{borderTopWidth:0.5, borderTopColor:'gray'}}>
         <View style={{flexDirection: 'row', marginBottom:5, marginLeft:10, marginRight:10, marginTop:5}}>
 
-          {
-            !this.props.iceBreaker &&
+
             <AdditionalActions
               onSend={this.props.sendMessage}
             />
-          }
+
 
 
           <Input
@@ -46,20 +45,3 @@ export default class Composer extends React.Component {
   }
 
 }
-
-// const styles = StyleSheet.create({
-//   textInput: {
-//     flex: 1,
-//     marginLeft: 10,
-//     fontSize: 16,
-//     lineHeight: 16,
-//     marginTop: Platform.select({
-//       ios: 6,
-//       android: 0,
-//     }),
-//     marginBottom: Platform.select({
-//       ios: 5,
-//       android: 3,
-//     }),
-//   },
-// })

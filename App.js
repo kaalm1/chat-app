@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import {AppLoading} from 'expo'
 import * as Font from 'expo-font'
+import { ActionSheetProvider } from '@expo/react-native-action-sheet'
 import rootReducer from './reducers/index'
 import Chat from './containers/Chat'
 import Fire from './Fire'
@@ -67,10 +68,12 @@ const App = (props) => {
       />
       :
       <Provider store={store}>
-        <Chat
-          user={props.user || firebaseUser() || user}
-          friend={props.friend || friend}
-        />
+        <ActionSheetProvider>
+          <Chat
+            user={props.user || firebaseUser() || user}
+            friend={props.friend || friend}
+          />
+        </ActionSheetProvider>
       </Provider>
   )
 }
