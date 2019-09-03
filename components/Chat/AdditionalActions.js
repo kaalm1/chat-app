@@ -53,7 +53,8 @@ class AdditionalActions extends React.Component {
     }
 
     onCoffeeDate = async (position) => {
-      if(Platform.OS !== 'ios'){
+      let result
+      if(Platform.OS == 'android'){
         result = await Location.hasServicesEnabledAsync()
         if(result === false){
           this.setState({alertOn: true})
@@ -71,7 +72,6 @@ class AdditionalActions extends React.Component {
       }
 
       position = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.Highest, maximumAge:5000})
-
 
       this.props.messageCoffee(position, this.props.onSend)
     }

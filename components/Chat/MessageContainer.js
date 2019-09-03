@@ -41,7 +41,7 @@ export default class MessageContainer extends React.PureComponent{
             style={[thisUser ? styles.messageContainerUser : styles.messageContainerMatch, {marginTop: !sameUser && sameDay ? 15 : 3}]}
             >
             {!!message.image && <MessageImage currentMessage={message}/>}
-            {/* {!!message.location && <MessageLocation currentMessage={message} navigation={this.props.navigation}/>} */}
+            {!!message.location && <MessageLocation currentMessage={message} navigation={this.props.navigation}/>}
             {!!message.text && <MessageText currentMessage={message} thisUser={thisUser}/>}
             <Time thisUser={thisUser} currentMessage={message}/>
           </View>

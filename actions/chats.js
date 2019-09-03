@@ -1,4 +1,4 @@
-import {Platform, AsyncStorage} from 'react-native'
+import {Platform} from 'react-native'
 import Config from '../config'
 import _ from 'lodash'
 var shuffle = require('shuffle-array')

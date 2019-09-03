@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "^3.0.3",
+    "@expo/webpack-config": "^0.7.4",
     "expo": "^34.0.1",
     "expo-font": "~6.0.1",
     "expo-image-manipulator": "~6.0.0",
