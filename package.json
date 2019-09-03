@@ -12,6 +12,7 @@
     "expo-font": "~6.0.1",
     "expo-image-manipulator": "~6.0.0",
     "expo-image-picker": "~6.0.0",
+    "firebase": "^6.5.0",
     "html-entities": "^1.2.1",
     "moment": "^2.24.0",
     "native-base": "^2.13.5",
