@@ -38,18 +38,19 @@ class AdditionalActions extends React.Component {
       let image = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         aspect: [4, 4],
+        base64: true
       })
 
       if (image.width > global.MAX_IMAGE_WIDTH){
         image = await ImageManipulator.manipulateAsync(
           image.uri,
-          [{ resize: { width: global.MAX_IMAGE_WIDTH}}],
+          [{ resize: { width: global.MAX_IMAGE_WIDTH}}, {saveOptions: {base64: true}}],
           { format: 'jpeg' }
         )
       }
 
-      if (image.uri){
-        this.props.messageImage(image.uri, this.props.onSend)
+      if (image.base64){
+        this.props.messageImage(image.base64)
       }
 
     }
@@ -75,7 +76,7 @@ class AdditionalActions extends React.Component {
       position = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.Highest, maximumAge:5000})
 
 
-      this.props.messageCoffee(position, this.props.onSend)
+      this.props.messageCoffee(position)
     }
 
     onEmojizeChat = () => {
@@ -89,7 +90,7 @@ class AdditionalActions extends React.Component {
     onSendGiphy = () => {
       let items = global.RANDOM_GIPHY_WORDS
       let word = items[Math.floor(Math.random()*items.length)]
-      this.props.messageGiphy(word, this.props.onSend)
+      this.props.messageGiphy(word)
     }
 
     showActionSheet = () => {

@@ -34,7 +34,7 @@ export function updateChatWithNewMessage(message){
   return {type: "MESSAGE_ADDED_TO_CHAT", payload: message}
 }
 
-export function messageCoffee(position, onSend){
+export function messageCoffee(position){
   return async (dispatch) => {
     let messageLocation = {
       text: data.name,
@@ -49,13 +49,13 @@ export function messageCoffee(position, onSend){
   }
 }
 
-export function messageImage(uri, onSend){
+export function messageImage(uri){
   return async (dispatch) => {
     saveSentMessage({image: uri})
   }
 }
 
-export function messageGiphy(word, onSend){
+export function messageGiphy(word){
   return async (dispatch) => {
     token = await AsyncStorage.getItem(Config.FIREBASE)
     // let words = message.text.toLowerCase().replace('giphy/','')
@@ -81,7 +81,7 @@ export function messageGiphy(word, onSend){
   }
 }
 
-export function messageTrivia(message, infoToSend){
+export function messageTrivia(message){
   return (dispatch) => {
     return fetch('https://opentdb.com/api.php?amount=1&type=multiple')
     .then(resp=>resp.json())
@@ -100,7 +100,7 @@ export function messageTrivia(message, infoToSend){
   }
 }
 
-export function messageQuote(message, infoToSend){
+export function messageQuote(message){
   return (dispatch) => {
     return fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
     .then(resp=>resp.json())

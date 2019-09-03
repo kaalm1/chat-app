@@ -38,15 +38,21 @@ const friend = {
 const App = (props) => {
   const [isReady, setIsReady] = useState(false);
 
-    const _cacheResourcesAsync = async () => {
-      await Font.loadAsync({
-        Roboto: require('./assets/fonts/Roboto.ttf'),
-        Roboto_medium: require('./assets/fonts/Roboto-Medium.ttf'),
-        Cabin: require('./assets/fonts/Cabin-Regular.ttf'),
-        CabinBold: require('./assets/fonts/Cabin-Bold.ttf'),
-        CabinItalic: require('./assets/fonts/Cabin-Italic.ttf'),
-      });
+  const _cacheResourcesAsync = async () => {
+    await Font.loadAsync({
+      Roboto: require('./assets/fonts/Roboto.ttf'),
+      Roboto_medium: require('./assets/fonts/Roboto-Medium.ttf'),
+      Cabin: require('./assets/fonts/Cabin-Regular.ttf'),
+      CabinBold: require('./assets/fonts/Cabin-Bold.ttf'),
+      CabinItalic: require('./assets/fonts/Cabin-Italic.ttf'),
+    });
+  }
 
+  const firebaseUser = () => {
+    return {
+      name: Fire.shared.name,
+      _id: Fire.shared.uid
+    }
   }
 
   return (
@@ -59,7 +65,7 @@ const App = (props) => {
       :
       <Provider store={store}>
         <Chat
-          user={props.user || user}
+          user={props.user || firebaseUser() || user}
           friend={props.friend || friend}
         />
       </Provider>
