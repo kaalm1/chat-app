@@ -3,11 +3,12 @@ A React Native Chat Application
 The ultimate chat component for your app! Add your own Firebase key and have a full chat application with texts, images, giphys, trivia, and more!
 
 Building the App
-To make a chat app we will need a server to store all the messages (firebase):
+To make a chat app we will need a server to store all the messages:
 
-Setting up a Server
-is a scary task, especially if you are pretty. We will use a service called Firebase, it’s free, it’s scalable, it’s easy, and it’s made by Google.
+Setting up a Server: We will use a service called Firebase, it’s free, it’s scalable, it’s easy, and it’s made by Google.
 Go to the Firebase console and setup a new app: https://console.firebase.google.com
+
+The follow the instructions below:
 
 ![Firebase 1](https://miro.medium.com/max/2860/1*ZybNV8cT8UXeiuRcQ15myg.png)
 ![Firebase 2](https://miro.medium.com/max/5784/1*eVzz_lpXceEIqdgBvyg78A.png)
