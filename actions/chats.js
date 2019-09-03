@@ -1,4 +1,4 @@
-import {AsyncStorage} from 'react-native'
+import {Platform, AsyncStorage} from 'react-native'
 import Config from '../config'
 import _ from 'lodash'
 var shuffle = require('shuffle-array')
@@ -52,13 +52,13 @@ export function messageCoffee(position, onSend){
 
 export function messageImage(uri, onSend){
   return async (dispatch) => {
-    onSend({image: 'data:image/xxx;base64,' + uri})
+    let updatedUrl = Platform.OS === 'web' ? uri : 'data:image/xxx;base64,' + uri
+    onSend({image: updatedUrl})
   }
 }
 
 export function messageGiphy(word, onSend){
   return async (dispatch) => {
-    token = await AsyncStorage.getItem(Config.FIREBASE)
     // let words = message.text.toLowerCase().replace('giphy/','')
     let options = {
       headers: {

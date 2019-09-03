@@ -18,10 +18,6 @@ const EMOJIFY_CHAT = 'Emojify Chat'
 const DEMOJIFY_CHAT = 'Demojify Chat'
 
 class AdditionalActions extends React.Component {
-  state = {
-    options: [ 'Cancel', 'Choose From Gallery', 'Coffee Date', 'Send Giphy', 'Inspire', 'Play Trivia'],
-    selected: ''
-  }
 
     onImagePick = async () => {
 
@@ -42,16 +38,16 @@ class AdditionalActions extends React.Component {
         base64: true
       })
 
-      if (image.width > global.MAX_IMAGE_WIDTH){
-        image = await ImageManipulator.manipulateAsync(
-          image.uri,
-          [{ resize: { width: global.MAX_IMAGE_WIDTH}}, {saveOptions: {base64: true}}],
-          { format: 'jpeg' }
-        )
-      }
+      // if (image.width > 0){
+      //   image = await ImageManipulator.manipulateAsync(
+      //     image.uri,
+      //     [{ resize: { width: global.MAX_IMAGE_WIDTH}}, {saveOptions: {base64: true}}],
+      //     { format: 'jpeg' }
+      //   )
+      // }
 
-      if (image.base64){
-        this.props.messageImage(image.base64, this.props.onSend)
+      if (image.base64 || image.uri){
+        this.props.messageImage(image.base64 || image.uri, this.props.onSend)
       }
 
     }
@@ -102,32 +98,6 @@ class AdditionalActions extends React.Component {
       this.props.messageTrivia(this.props.onSend)
     }
 
-    showActionSheet = () => {
-      this.ActionSheet.show()
-      }
-
-    handlePress = (i) => {
-      this.setState({
-        selected: i
-      })
-      switch (i) {
-        case 1:
-          this.onImagePick()
-          break
-        case 2:
-          this.onCoffeeDate()
-          break
-        case 3:
-          this.onSendGiphy()
-          break
-        case 4:
-          this.onSendQuote()
-        case 5:
-          this.onSendTrivia()
-        default:
-          break
-      }
-    }
 
     _onOpenActionSheet = () => {
       // Same interface as https://facebook.github.io/react-native/docs/actionsheetios.html
@@ -170,12 +140,6 @@ class AdditionalActions extends React.Component {
         style={{alignSelf:'flex-end', paddingBottom:5}}
         onPress={this.showActionSheet}
       >
-        {/* <ActionSheet
-          ref={o => this.ActionSheet = o}
-          options={this.state.options}
-          cancelButtonIndex={CANCEL_INDEX}
-          onPress={this.handlePress}
-        /> */}
         <Icon name='plus-circle' type='Feather' onPress={this._onOpenActionSheet}/>
 
       </TouchableOpacity>
