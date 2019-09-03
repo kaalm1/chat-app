@@ -29,7 +29,7 @@ class Chat extends React.Component{
       <View style={{flex:1}}>
         <SafeAreaView style={{flex:1}}>
         <ChatMain
-          messages={messages || data}
+          messages={messages}
           appendNewMessage={this.appendNewMessage}
           friend={this.props.friend}
           user={this.props.user}

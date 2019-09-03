@@ -50,6 +50,7 @@ const App = (props) => {
   }
 
   const firebaseUser = () => {
+    if(!Fire.shared.uid){return null}
     return {
       name: Fire.shared.name,
       _id: Fire.shared.uid

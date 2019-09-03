@@ -25,7 +25,7 @@ export function saveAllMessages(chats){
 
 export function saveSentMessage(message){
   return async (dispatch, getState) => {
-    updateChatWithNewMessage(message)
+    dispatch({type: "MESSAGE_ADDED_TO_CHAT", payload: message})
     Fire.shared.send(message)
   }
 }
