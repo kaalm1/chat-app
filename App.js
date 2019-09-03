@@ -7,6 +7,7 @@ import {AppLoading} from 'expo'
 import * as Font from 'expo-font'
 import rootReducer from './reducers/index'
 import Chat from './containers/Chat'
+import Fire from './Fire'
 const uuidv1 = require('uuid/v1')
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
