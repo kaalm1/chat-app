@@ -8,7 +8,7 @@ import * as ImageManipulator from 'expo-image-manipulator'
 import * as Location from 'expo-location'
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
-import {messageImage, messageCoffee, messageGiphy} from '../../actions/chats'
+import {messageImage, messageCoffee, messageGiphy, messageQuote, messageTrivia} from '../../actions/chats'
 
 import ActionSheet from 'react-native-actionsheet'
 
@@ -18,7 +18,7 @@ const DEMOJIFY_CHAT = 'Demojify Chat'
 
 class AdditionalActions extends React.Component {
   state = {
-    options: [ 'Cancel', 'Choose From Gallery', 'Coffee Date', 'Send Giphy'],
+    options: [ 'Cancel', 'Choose From Gallery', 'Coffee Date', 'Send Giphy', 'Inspire', 'Play Trivia'],
     selected: ''
   }
 
@@ -93,6 +93,14 @@ class AdditionalActions extends React.Component {
       this.props.messageGiphy(word, this.props.onSend)
     }
 
+    onSendQuote = () => {
+      this.props.messageQuote(this.props.onSend)
+    }
+
+    onSendTrivia = () => {
+      this.props.messageTrivia(this.props.onSend)
+    }
+
     showActionSheet = () => {
       this.ActionSheet.show()
       }
@@ -111,6 +119,10 @@ class AdditionalActions extends React.Component {
         case 3:
           this.onSendGiphy()
           break
+        case 4:
+          this.onSendQuote()
+        case 5:
+          this.onSendTrivia()
         default:
           break
       }
@@ -139,7 +151,9 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     messageImage,
     messageCoffee,
-    messageGiphy
+    messageGiphy,
+    messageQuote,
+    messageTrivia
   }, dispatch)
 }
 

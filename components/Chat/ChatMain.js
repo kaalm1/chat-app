@@ -27,7 +27,6 @@ class ChatMain extends React.Component{
   }
 
   sendMessage = (message) => {
-    console.log(message)
     if (_.isEmpty(message) && this.state.newInput.trim().length === 0){
       this.setState({newInput: null})
       return

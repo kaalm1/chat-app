@@ -82,7 +82,7 @@ export function messageGiphy(word, onSend){
   }
 }
 
-export function messageTrivia(message, onSend){
+export function messageTrivia(onSend){
   return (dispatch) => {
     return fetch('https://opentdb.com/api.php?amount=1&type=multiple')
     .then(resp=>resp.json())
@@ -91,27 +91,23 @@ export function messageTrivia(message, onSend){
       let correctAns = entities.decode(data.results[0].correct_answer)
       let wrongAns = data.results[0].incorrect_answers.map(ans=>entities.decode(ans))
       let answers = shuffle([...wrongAns,correctAns])
-      message.text = `"${question}" \n A. ${answers[0]} \n B. ${answers[1]} \n C. ${answers[2]} \n D. ${answers[3]}`
-      onSend(message)
+      onSend({text: `"${question}" \n A. ${answers[0]} \n B. ${answers[1]} \n C. ${answers[2]} \n D. ${answers[3]}`})
     })
     .catch(()=>{
-      message.text = 'No trivia available.'
-      onSend(message)
+      onSend({text: 'No trivia available.'})
     })
   }
 }
 
-export function messageQuote(message, onSend){
+export function messageQuote(onSend){
   return (dispatch) => {
     return fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
     .then(resp=>resp.json())
     .then((data)=>{
-      message.text = `"${data.quoteText}" - ${data.quoteAuthor}`
-      onSend(message)
+      onSend({text: `"${data.quoteText}" - ${data.quoteAuthor}`})
     })
     .catch(()=>{
-      message.text = 'No quote available.'
-      onSend(message)
+      onSend({text: 'No quote available.'})
     })
   }
 }
