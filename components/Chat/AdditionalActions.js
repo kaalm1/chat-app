@@ -50,7 +50,7 @@ class AdditionalActions extends React.Component {
       }
 
       if (image.base64){
-        this.props.messageImage(image.base64)
+        this.props.messageImage(image.base64, this.props.onSend)
       }
 
     }
@@ -76,7 +76,7 @@ class AdditionalActions extends React.Component {
       position = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.Highest, maximumAge:5000})
 
 
-      this.props.messageCoffee(position)
+      this.props.messageCoffee(position, this.props.onSend)
     }
 
     onEmojizeChat = () => {
@@ -90,7 +90,7 @@ class AdditionalActions extends React.Component {
     onSendGiphy = () => {
       let items = global.RANDOM_GIPHY_WORDS
       let word = items[Math.floor(Math.random()*items.length)]
-      this.props.messageGiphy(word)
+      this.props.messageGiphy(word, this.props.onSend)
     }
 
     showActionSheet = () => {

@@ -4,6 +4,7 @@ import _ from 'lodash'
 var shuffle = require('shuffle-array')
 const Entities = require('html-entities').XmlEntities
 const entities = new Entities()
+import moment from 'moment'
 import Fire from '../Fire';
 const GIPHY_KEY = 'c8qlNTGXI0TJRLZEaqw3m93jSUWUPBJQ'
 
@@ -34,28 +35,28 @@ export function updateChatWithNewMessage(message){
   return {type: "MESSAGE_ADDED_TO_CHAT", payload: message}
 }
 
-export function messageCoffee(position){
+
+export function messageCoffee(position, onSend){
   return async (dispatch) => {
     let messageLocation = {
-      text: data.name,
+      text: 'Lets Meet!',
       location: {
-        latitude: data.coordinates.latitude,
-        longitude: data.coordinates.longitude,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
       },
     }
 
-    Fire.shared.send(messageLocation)
-    Fire.shared.send({text: `@ ${data.location.display_address}`})
+    onSend(messageLocation)
   }
 }
 
-export function messageImage(uri){
+export function messageImage(uri, onSend){
   return async (dispatch) => {
-    saveSentMessage({image: uri})
+    onSend({image: 'data:image/xxx;base64,' + uri})
   }
 }
 
-export function messageGiphy(word){
+export function messageGiphy(word, onSend){
   return async (dispatch) => {
     token = await AsyncStorage.getItem(Config.FIREBASE)
     // let words = message.text.toLowerCase().replace('giphy/','')
@@ -70,9 +71,9 @@ export function messageGiphy(word){
     .then(res=>res.json())
     .then(data=>{
       if(data.data.fixed_height_downsampled_width > data.data.fixed_width_downsampled_width){
-        saveSentMessage({image: data.data.fixed_height_downsampled_url})
+        onSend({image: data.data.fixed_height_downsampled_url})
       } else {
-        saveSentMessage({image: data.data.fixed_width_downsampled_url})
+        onSend({image: data.data.fixed_width_downsampled_url})
       }
     })
     .catch(()=>{
@@ -81,7 +82,7 @@ export function messageGiphy(word){
   }
 }
 
-export function messageTrivia(message){
+export function messageTrivia(message, onSend){
   return (dispatch) => {
     return fetch('https://opentdb.com/api.php?amount=1&type=multiple')
     .then(resp=>resp.json())
@@ -91,26 +92,26 @@ export function messageTrivia(message){
       let wrongAns = data.results[0].incorrect_answers.map(ans=>entities.decode(ans))
       let answers = shuffle([...wrongAns,correctAns])
       message.text = `"${question}" \n A. ${answers[0]} \n B. ${answers[1]} \n C. ${answers[2]} \n D. ${answers[3]}`
-      saveSentMessage(message)
+      onSend(message)
     })
     .catch(()=>{
       message.text = 'No trivia available.'
-      saveSentMessage(message)
+      onSend(message)
     })
   }
 }
 
-export function messageQuote(message){
+export function messageQuote(message, onSend){
   return (dispatch) => {
     return fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
     .then(resp=>resp.json())
     .then((data)=>{
       message.text = `"${data.quoteText}" - ${data.quoteAuthor}`
-      saveSentMessage(message)
+      onSend(message)
     })
     .catch(()=>{
       message.text = 'No quote available.'
-      saveSentMessage(message)
+      onSend(message)
     })
   }
 }
