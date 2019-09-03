@@ -7,7 +7,7 @@ import _ from 'lodash'
 import ChatMain from '../components/Chat/ChatMain'
 import Config from '../config'
 import commonColor from '../styles/commonColor.style'
-import {updateChatWithNewMessage} from '../actions/chats'
+import {saveSentMessage} from '../actions/chats'
 import Fire from '../Fire'
 import data from '../assets/data/messages.json'
 
@@ -18,7 +18,7 @@ class Chat extends React.Component{
   }
 
   appendNewMessage = (message) => {
-    this.props.updateChatWithNewMessage(message)
+    this.props.saveSentMessage(message)
   }
 
 
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    updateChatWithNewMessage,
+    saveSentMessage,
   }, dispatch)
 }
 
