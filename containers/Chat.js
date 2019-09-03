@@ -8,10 +8,14 @@ import ChatMain from '../components/Chat/ChatMain'
 import Config from '../config'
 import commonColor from '../styles/commonColor.style'
 import {updateChatWithNewMessage} from '../actions/chats'
-
+import Fire from '../Fire'
 import data from '../assets/data/messages.json'
 
 class Chat extends React.Component{
+
+  componentWillUnmount() {
+    Fire.shared.off();
+  }
 
   appendNewMessage = (message) => {
     this.props.updateChatWithNewMessage(message)

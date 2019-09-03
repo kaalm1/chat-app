@@ -4,7 +4,7 @@ import _ from 'lodash'
 var shuffle = require('shuffle-array')
 const Entities = require('html-entities').XmlEntities
 const entities = new Entities()
-const CHAT_URL = process.env.NODE_ENV === 'development' ? Config.CHAT_URL_DEV : Config.CHAT_URL
+import Fire from '../Fire';
 
 export function checkGoodFirstMessage(message){
   return ( message && message.length >= 15 && message.split(" ").length >=4)
@@ -12,24 +12,9 @@ export function checkGoodFirstMessage(message){
 
 export function getAllChats(userId, dating){
   return async (dispatch) => {
-    token = await AsyncStorage.getItem(Config.FIREBASE)
-    let options = {
-      method: 'post',
-      headers: {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify({matches: dating.map(x=>x.uuid)}),
-    }
-
-    return fetch(`${CHAT_URL}/messages/${userId}`, options)
-    .then(res=>res.json())
-    .then( chats =>{
-      dispatch({type: 'ALL_CHATS', payload: chats})
-      dispatch({type: 'MAIN_LOADING_END'})
-    })
-    .catch(()=>dispatch({type: 'MAIN_LOADING_END'}))
+    Fire.shared.on(message =>
+      dispatch({type: 'ALL_CHATS', payload: message})
+    )
   }
 }
 
@@ -39,24 +24,7 @@ export function saveAllMessages(chats){
 
 export function saveSentMessage(message){
   return async (dispatch, getState) => {
-    token = await AsyncStorage.getItem(Config.FIREBASE)
-    let options = {
-      method: 'post',
-      headers: {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify({message: message}),
-    }
-    return fetch(`${CHAT_URL}/messages/new`, options)
-    .then(res=>res.json())
-    .then( saved => dispatch({type: 'WAS_MESSAGE_SAVED', payload: saved}))
-    .catch(()=>{
-      console.log('unauthorized')
-      let socket = getState().websockets.socket
-      socket.emit('recieve new user message',{message: message})
-    })
+    Fire.shared.send(message)
   }
 }
 

@@ -23,17 +23,17 @@ const friend = {
   picture_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'
 }
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 // Initialize Firebase
-const firebaseConfig = {
-  apiKey: "<YOUR-API-KEY>",
-  authDomain: "<YOUR-AUTH-DOMAIN>",
-  databaseURL: "<YOUR-DATABASE-URL>",
-  storageBucket: "<YOUR-STORAGE-BUCKET>"
-};
-
-firebase.initializeApp(firebaseConfig);
+// const firebaseConfig = {
+//   apiKey: "<YOUR-API-KEY>",
+//   authDomain: "<YOUR-AUTH-DOMAIN>",
+//   databaseURL: "<YOUR-DATABASE-URL>",
+//   storageBucket: "<YOUR-STORAGE-BUCKET>"
+// };
+//
+// firebase.initializeApp(firebaseConfig);
 
 const App = (props) => {
   const [isReady, setIsReady] = useState(false);
